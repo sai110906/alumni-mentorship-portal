@@ -1,4 +1,4 @@
-```javascript
+
 import axios from 'axios';
 
 const API = axios.create({
@@ -14,8 +14,8 @@ API.interceptors.request.use(
       localStorage.getItem('alumni_portal_user') || 'null'
     );
 
-    if (user?.token) {
-      config.headers.Authorization = `Bearer ${user.token}`;
+    if (user && user.token) {
+      config.headers.Authorization = 'Bearer ' + user.token;
     }
 
     return config;
@@ -24,4 +24,3 @@ API.interceptors.request.use(
 );
 
 export default API;
-```
