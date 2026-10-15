@@ -5,7 +5,12 @@ let mongoServer;
 const connectDB = async () => {
   const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/alumni_mentorship_db';
   try {
-    const conn = await mongoose.connect(uri, { serverSelectionTimeoutMS: 2000 });
+    
+const conn = await mongoose.connect(uri, {
+  dbName: 'alumni_mentorship_db',
+  serverSelectionTimeoutMS: 2000
+});
+
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.warn(`Local MongoDB connection failed (${error.message}).`);
